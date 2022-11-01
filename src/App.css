@@ -1,0 +1,46 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+.App {
+  padding: 1.5rem;
+  background-color: rgb(176, 219, 239);
+}
+.movies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.search_nav {
+  display: flex;
+  align-items: center;
+  padding-bottom: 1.5rem;
+}
+
+.title {
+  padding-right: 3rem;
+}
+.title h1 {
+  color: rgb(0, 0, 0);
+  text-shadow: 0.5px 1px rgb(24, 133, 155);
+}
+
+.search_box input {
+  border: 0;
+  outline: 0;
+  margin-right: 0.3rem;
+  padding: 0.3rem;
+  border-radius: 1rem;
+}
+
+.search_box button {
+  border: 0;
+  outline: 0;
+  background-color: rgb(32, 137, 186);
+  padding: 0.4rem;
+  border-radius: 0.7rem;
+  color: rgb(204, 246, 253);
+  cursor: pointer;
+}
