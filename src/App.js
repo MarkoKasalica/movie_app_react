@@ -1,29 +1,20 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import movieClient from "./client";
 import MovieCard from "./MovieCard";
+
 function App() {
-  const API_URL =
-    "https://api.themoviedb.org/3/movie/popular?api_key=3738348026f6a36fb11001e1d7cead56";
-
-  const API_SEARCH =
-    "https://api.themoviedb.org/3/search/movie?api_key=3738348026f6a36fb11001e1d7cead56&query=";
-
   const [movies, setMovies] = useState([]);
   const [term, setTerm] = useState("");
 
   useEffect(() => {
-    fetch(API_URL)
-      .then((res) => res.json())
-      .then((data) => setMovies(data.results));
+    movieClient.getPopular().then((data) => setMovies(data.results));
   }, []);
-  console.log(movies);
 
   const handleSearch = (e) => {
     e.preventDefault();
 
-    fetch(API_SEARCH + term)
-      .then((res) => res.json())
-      .then((data) => setMovies(data.results));
+    movieClient.search(term).then((data) => setMovies(data.results || []));
   };
   return (
     <div className="App">
@@ -34,7 +25,7 @@ function App() {
         <div className="search_box">
           <form onSubmit={handleSearch}>
             <input onChange={(e) => setTerm(e.target.value)} />
-            <button>Search</button>
+            <button type="submit">Search</button>
           </form>
         </div>
       </div>
